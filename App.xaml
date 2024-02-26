@@ -9,6 +9,7 @@
             <ResourceDictionary.MergedDictionaries>
                 <ResourceDictionary Source="Assets/Themes/SearchBox.xaml"/>
                 <ResourceDictionary Source="Assets/Themes/MainWindowTheme.xaml"/>
+                <ResourceDictionary Source="Assets/Themes/Button.xaml"/>
             </ResourceDictionary.MergedDictionaries>
             <BitmapImage x:Key="TechBrainImage" UriSource="Assets/Images/TechBrainImage.png"/>
             <DataTemplate DataType="{x:Type viewModel:HomeViewModel}">

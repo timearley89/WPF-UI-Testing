@@ -53,8 +53,8 @@
             </StackPanel>
 
             <!--Col 1 Row 1-->
-            <ContentControl Grid.Column="1" Grid.Row="1" Margin="10" Content="{Binding CurrentView}" 
-                            HorizontalContentAlignment="Stretch" VerticalContentAlignment="Stretch">
+            <ContentControl Grid.Column="1" Grid.Row="1" Margin="10,0,10,10" Content="{Binding CurrentView}" 
+                            HorizontalContentAlignment="Center" VerticalContentAlignment="Top">
 
             </ContentControl>
         </Grid>

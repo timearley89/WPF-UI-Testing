@@ -11,14 +11,10 @@
 
   <ItemGroup>
     <None Remove="Assets\Images\TechBrainImage.png" />
-    <None Remove="Assets\Images\Windows10Logo.jpg" />
   </ItemGroup>
 
   <ItemGroup>
     <Content Include="Assets\Images\TechBrainImage.png">
-      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
-    </Content>
-    <Content Include="Assets\Images\Windows10Logo.jpg">
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </Content>
   </ItemGroup>
