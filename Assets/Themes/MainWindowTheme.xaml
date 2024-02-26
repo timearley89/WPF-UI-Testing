@@ -1,0 +1,88 @@
+﻿<ResourceDictionary xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+                    xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+                    xmlns:tools="clr-namespace:WPF_UI_Testing.Tools">
+    <tools:BackgroundColorConverter x:Key="BackgroundColorConverter"/>
+    <tools:MouseOverColorConverter x:Key="MouseOverColorConverter"/>
+    <tools:ClickedColorConverter x:Key="ClickedColorConverter"/>
+    <SolidColorBrush x:Key="BackgroundInitialStop" Color="#442765"/>
+    <SolidColorBrush x:Key="BackgroundSecondaryColor" Color="#276544"/>
+    <SolidColorBrush x:Key="MenuMouseOverBrush" Color="{Binding Source={StaticResource BackgroundInitialStop}, Path=Color, Converter={StaticResource MouseOverColorConverter}, Mode=OneWay}"/>
+    <SolidColorBrush x:Key="MenuIsClickedBrush" Color="{Binding Source={StaticResource BackgroundInitialStop}, Path=Color, Converter={StaticResource ClickedColorConverter}, Mode=OneWay}"/>
+
+    <Style TargetType="RadioButton" x:Key="MenuButton" BasedOn="{StaticResource {x:Type ToggleButton}}">
+        <Style.Setters>
+            <Setter Property="FontSize" Value="24"/>
+            <Setter Property="Foreground" Value="White"/>
+            <Setter Property="FontFamily" Value="Bodoni MT"/>
+            <Setter Property="FontWeight" Value="Bold"/>
+            <Setter Property="VerticalContentAlignment" Value="Center"/>
+            <Setter Property="VerticalAlignment" Value="Center"/>
+            <Setter Property="HorizontalAlignment" Value="Stretch"/>
+            <Setter Property="HorizontalContentAlignment" Value="Stretch"/>
+            <Setter Property="FontStyle" Value="Oblique"/>
+            <Setter Property="BorderThickness" Value="0"/>
+            <Setter Property="Background" Value="Transparent"/>
+            <Setter Property="Height" Value="50"/>
+            <Setter Property="Template">
+                <Setter.Value>
+                    <ControlTemplate TargetType="RadioButton">
+                        <Grid HorizontalAlignment="Stretch" VerticalAlignment="Stretch" Background="{TemplateBinding Background}">
+                            <TextBlock Text="{TemplateBinding Content}" VerticalAlignment="Center"/>
+                        </Grid>
+                    </ControlTemplate>
+                </Setter.Value>
+            </Setter>
+        </Style.Setters>
+        <Style.Triggers>
+            <MultiTrigger>
+                <MultiTrigger.Conditions>
+                    <Condition Property="IsChecked" Value="True"/>
+                    <Condition Property="IsMouseOver" Value="True"/>
+                </MultiTrigger.Conditions>
+                <Setter Property="Background" Value="{StaticResource MenuIsClickedBrush}"/>
+            </MultiTrigger>
+            <MultiTrigger>
+                <MultiTrigger.Conditions>
+                    <Condition Property="IsChecked" Value="True"/>
+                    <Condition Property="IsMouseOver" Value="False"/>
+                </MultiTrigger.Conditions>
+                <Setter Property="Background" Value="{StaticResource MenuIsClickedBrush}"/>
+            </MultiTrigger>
+            <MultiTrigger>
+                <MultiTrigger.Conditions>
+                    <Condition Property="IsChecked" Value="False"/>
+                    <Condition Property="IsMouseOver" Value="True"/>
+                </MultiTrigger.Conditions>
+                <Setter Property="Background" Value="{StaticResource MenuMouseOverBrush}"/>
+            </MultiTrigger>
+        </Style.Triggers>
+    </Style>
+
+    <Style TargetType="TextBlock" x:Key="HeaderText">
+        <Setter Property="FontSize" Value="34"/>
+        <Setter Property="Foreground" Value="White"/>
+        <Setter Property="VerticalAlignment" Value="Center"/>
+        <Setter Property="FontFamily" Value="Bodoni MT"/>
+        <Setter Property="FontWeight" Value="SemiBold"/>
+        <Setter Property="HorizontalAlignment" Value="Stretch"/>
+        <Setter Property="HorizontalAlignment" Value="Left"/>
+        <Setter Property="Margin" Value="10,20,20,20"/>
+        <Setter Property="TextDecorations" Value="None"/>
+    </Style>
+
+    <Style TargetType="Border" x:Key="MainWindow">
+        <Setter Property="Background">
+            <Setter.Value>
+                <LinearGradientBrush EndPoint="1,1" StartPoint="0,0">
+                    <GradientStop Color="{Binding Source={StaticResource BackgroundSecondaryColor}, Path=Color}" Offset="1"/>
+                    <GradientStop Color="{Binding Source={StaticResource BackgroundInitialStop}, Path=Color}" Offset="0"/>
+                </LinearGradientBrush>
+            </Setter.Value>
+        </Setter>
+        <Setter Property="Clip">
+            <Setter.Value>
+                <RectangleGeometry RadiusX="20" RadiusY="20" Rect="0,0,920,600"/>
+            </Setter.Value>
+        </Setter>
+    </Style>
+</ResourceDictionary>
